@@ -9,6 +9,7 @@ class AdminFundingAgenciesControllerCore extends AdminController
 		$this->table = 'funding_agency';
 		$this->className = 'FundingAgency';
 		$this->lang = true;
+		$this->allow_export = true;
 		//$this->addRowAction('view');
 		$this->addRowAction('edit');
 		$this->addRowAction('delete');
