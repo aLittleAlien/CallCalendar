@@ -9,6 +9,7 @@ class AdminDeadlinesControllerCore extends AdminController
 		$this->table = 'deadline';
 		$this->className = 'Deadline';
 		$this->lang = true;
+		$this->allow_export = true;
 		//$this->addRowAction('view');
 		$this->addRowAction('edit');
 		$this->addRowAction('delete');
