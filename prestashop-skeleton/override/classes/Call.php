@@ -53,9 +53,7 @@ class CallCore extends ObjectModel
 	
 	public $name;
 
-	public $deadlines; //TODO implement that later
-
-	public $inputLeaders; //this is filed for call's contacts
+	public $inputLeaders; //this is field for call's contacts
 
 
 	/**
@@ -82,11 +80,15 @@ class CallCore extends ObjectModel
 			'description' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
 			'keywords' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
 			'requirements' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
-			// 'name' => 				array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isString', 'required' => true, 'size' => 255),
 
 		),
 	);
 
+	/**
+	 * 
+	 * Get all calls
+	 * 
+	 */
 	public static function getCalls($id_lang = 0, $id_status = null, $id_funding_agency = null, $id_type = null, $id_contact = null)
 	{
 		if (!$id_lang)
@@ -137,6 +139,11 @@ class CallCore extends ObjectModel
 		return $calls;
 	}
 	
+	/**
+	 * 
+	 * Get one specific call by id
+	 * 
+	 */
 	public static function getCallById($id_call = null, $id_lang = 0)
 	{
 		if(!$id_call) $id_call=$this->id;
@@ -163,28 +170,12 @@ class CallCore extends ObjectModel
 		return $call;
 	}
 	
-	//we have no idea why we have it here :O
-	public static function getCall($id_call=null, $id_lang = 0)
-	{
-		if(!$id_call) $id_call=$this->id;
-		if (!$id_lang)
-			$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-		SELECT DISTINCT c.*, cl.`title`, cl.`description`, cl.`keywords`, cl.`requirements`, ctl.`name` AS type, csl.`name` AS status, fal.`name` AS agency
-		FROM `'._DB_PREFIX_.'call` c
-		LEFT JOIN `'._DB_PREFIX_.'call_lang` AS cl ON (c.`id_call` = cl.`id_call` AND cl.`id_lang` = '.(int)$id_lang.')
-		LEFT JOIN `'._DB_PREFIX_.'call_type` ct ON c.`id_call_type` = ct.`id_call_type`
-		LEFT JOIN `'._DB_PREFIX_.'call_type_lang` ctl ON (ctl.`id_call_type` = ct.`id_call_type` AND ctl.`id_lang` = '.(int)$id_lang.')
-		LEFT JOIN `'._DB_PREFIX_.'call_status` cs ON c.`id_call_status` = cs.`id_call_status`
-		LEFT JOIN `'._DB_PREFIX_.'call_status_lang` csl ON (csl.`id_call_status` = cs.`id_call_status` AND csl.`id_lang` = '.(int)$id_lang.')
-		LEFT JOIN `'._DB_PREFIX_.'funding_agency` fa ON c.`id_funding_agency` = fa.`id_funding_agency`
-		LEFT JOIN `'._DB_PREFIX_.'funding_agency_lang` fal ON (fal.`id_funding_agency` = fa.`id_funding_agency` AND fal.`id_lang` = '.(int)$id_lang.')			
-		WHERE c.`id_call` = '.$id_call.'
-		ORDER BY ctl.`name`, c.`id_call` ASC');
-	}
-
-
-
+	
+	/**
+	 * 
+	 * Static function for getting all call's related members
+	 * 
+	 */
 	public static function getCallRelatedMembersById($id_call)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -196,10 +187,7 @@ class CallCore extends ObjectModel
 	}
 
 
-
-
-
-
+	//update call's contact person before adding new call
 	public function add($autodate = true, $null_values = true)
 
 	{
@@ -208,7 +196,7 @@ class CallCore extends ObjectModel
 		return $success;
 	}
 
-
+	//update call's contact person before updating call
 	public function update($nullValues = false)
 
 	{
@@ -223,6 +211,7 @@ class CallCore extends ObjectModel
 
 	}
 
+	//delete call's contact person before deleting call
 	public function delete()
 
 	{
@@ -235,6 +224,11 @@ class CallCore extends ObjectModel
 		return false;
 	}
 
+	/**
+	 * 
+	 * Static function for getting all call's members
+	 * 
+	 */
 	public static function getMembersStatic($id_call)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -244,11 +238,19 @@ class CallCore extends ObjectModel
 			WHERE cc.`id_call` = '.(int)$id_call);
 	}
 
+	/**
+	 * 
+	 * Get all call's members
+	 * 
+	 */
 	public function getMembers()
 	{
 		return Call::getMembersStatic((int)$this->id);
 	}
 
+	/**
+	 * Update call's staff (contact persons)
+	 */
 	public function updateStaff( $contact )
 	{
 		
@@ -266,12 +268,18 @@ class CallCore extends ObjectModel
 
 	}
 
+	/**
+	 * Clean call's staff (contact persons)
+	 */
 	public function cleanStaff()
 	{		
 		Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'call_contact` WHERE `id_call` = '.(int)$this->id);
 	}
 
 
+	/**
+	 * Add call's staff (contact persons)
+	 */
 	public function addStaff($contacts)
 	{
 		if ($contacts && !empty($contacts)){
@@ -286,6 +294,11 @@ class CallCore extends ObjectModel
 		
 	}
 
+	/**
+	 * 
+	 * Static function for getting all call'a contact persons
+	 * 
+	 */
 	public static function getContactsStatic($id_call)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -294,12 +307,23 @@ class CallCore extends ObjectModel
 			LEFT JOIN `'._DB_PREFIX_.'call_contact` AS cc ON c.`id_customer` = cc.`id_customer`
 			WHERE cc.`id_call` = '.(int)$id_call);
 	}
-	
+
+
+	/**
+	 * 
+	 * Get all call'a contact persons
+	 * 
+	 */
 	public function getContacts()
 	{
 		return Call::getContactsStatic((int)$this->id);
 	}
 
+	/**
+	 * 
+	 * Static function for getting all call'a contact persons
+	 * 
+	 */
 	public static function getCallsContacts($id_call, $id_lang = 0) 
 	{
 		if (!$id_lang)

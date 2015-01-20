@@ -50,9 +50,9 @@ class ApplicationStatusCore extends ObjectModel
 	
 	
 	/**
-	* Get all available types
+	* Get all available statuses
 	*
-	* @return array types
+	* @return array statuses
 	*/
 	public static function getApplicationStatuses($id_lang = null)
 	{
@@ -67,9 +67,9 @@ class ApplicationStatusCore extends ObjectModel
 	}
 
 	/**
-	* Get the current type name
+	* Get the current status name
 	*
-	* @return string Type
+	* @return string Status
 	*/
 	public static function getApplicationStatus($id_application_status, $id_lang = null)
 	{
@@ -85,6 +85,11 @@ class ApplicationStatusCore extends ObjectModel
 		);
 	}
 	
+	/**
+	 *  Get id by application status name
+	 * 
+	 * @return Id
+	 */
 	public static function getApplicationStatusIdByName($id_lang = null, $status_name)
 	{
 		if (!$id_lang)

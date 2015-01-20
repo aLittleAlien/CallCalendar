@@ -57,7 +57,7 @@ class AdminFundingProgramsControllerCore extends AdminController
         if ($this->display == 'edit' || $this->display == 'add' || $this->display == 'list')
 		{
 			$this->addjQueryPlugin(array('autocomplete'));
-            //$this->addJS(array(_PS_JS_DIR_.'admin-projects1.js'));
+            
 		}
 	}
 

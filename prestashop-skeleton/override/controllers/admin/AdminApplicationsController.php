@@ -111,16 +111,6 @@ class AdminApplicationsControllerCore extends AdminController
 		parent::initProcess();
 	}
 
-	// public function initContent() 
-	// {
-	    
-	//     parent::initContent();
-
-	//     // you can place your favcount method inside the class and use it
-	//     // $createProject = $this->createProject();//$this->id_object
-	//     // then assign the variable to the template
-	//     // $this->context->smarty->assign('createProject', $createProject);
-	// }
 	
 	public function renderList()
 	{
@@ -141,8 +131,6 @@ class AdminApplicationsControllerCore extends AdminController
 		$project_types = ProjectType::getProjectTypes($this->context->language->id);
 		
 		$application_statuses = ApplicationStatus::getApplicationStatuses($this->context->language->id);
-		
-		// $project_kinds=FundingAgencyProjectKind::getFundingAgencyProjectKinds($this->context->language->id);
 		
 		$calls = Call::getCalls($this->context->language->id);
 
@@ -321,13 +309,6 @@ class AdminApplicationsControllerCore extends AdminController
 				array(
 					'type' => 'create_project',
 					'label' => $this->l('Create Project'),
-					// 'name' => 'overview',
-					// 'lang' => true,
-					// 'autoload_rte' => true,
-					// 'cols' => 100,
-					// 'rows' => 10,
-					// 'class' => 'rte',
-					// 'hint' => $this->l('Invalid characters:').' <>;=#{}'
 				)
 				
 			)
@@ -375,126 +356,11 @@ class AdminApplicationsControllerCore extends AdminController
 	public function createProject() 
 	{
 
-		//TODO maybe do some checks or whatever
+		//TODO maybe do some validation or checks 
 		Application::createProject(Tools::getValue('id_application'));
 
 	}
 	
-	
-	/*public function renderView()
-	{
-		$this->context = Context::getContext();
-		if (!($project = $this->loadObject(true)))
-			return;
-			
-		$this->tpl_view_vars = array(
-			'project' => $project->getProject($project->id,$this->context->language->id),
-			'language' => $this->context->language,
-			'partnerList' => $this->renderProjectPartnersList($project),
-			'fundingAgenciesList' => $this->renderProjectFundingList($project) ,
-			'initiativesList' => $this->renderProjectInitiativeList($project)
-		);
-
-		return parent::renderView();
-	}
-		
-	public function renderProjectPartnersList($project){
-	
-	$partner_types_array=array();
-		$partner_types = PartnerType::getPartnerTypes($this->context->language->id);
-		if (!$partner_types)
-			$this->errors[] = Tools::displayError('No partner types');
-		else
-			foreach ($partner_types as $partner_type)
-				$partner_types_array[$partner_type['name']] = $partner_type['name'];
-		
-
-		$partner_fields_display = (array(
-			'id_partner' => array('title' => $this->l('ID'),'width' => 25),
-			'name' => array('title' => $this->l('Name'),'width' => 'auto'),	
-			'acronym' => array('title' => $this->l('Acronym'),'width' => 25),
-			'type' => array('title' => $this->l('Type'),'type'  => 'select','list' => $partner_types_array,'filter_key' => 'ptl!name','width' => 'auto'),		
-			'city' => array('title' => $this->l('City'),'width' => 'auto'),
-			'country' => array('title' => $this->l('Country'),'width' => 'auto')
-		));
-
-		$partner_list = Project::getProjectRelatedPartners($project->id);
-if($partner_list ){
-		$helper = new HelperList();
-		$helper->currentIndex = Context::getContext()->link->getAdminLink('AdminPartners', false);
-		$helper->token = Tools::getAdminTokenLite('AdminPartners');
-		$helper->shopLinkType = '';
-		$helper->table = 'partner';
-		$helper->identifier = 'id_partner';
-		$helper->actions = array('edit', 'view');
-		$helper->show_toolbar = false;
-
-		return $helper->generateList($partner_list, $partner_fields_display);
-		}
-		return "No related partners ";
-	}
-	public function renderProjectFundingList($project){
-	
-
-		$funding_fields_display = (array(
-			'id_funding_agency' => array('title' => $this->l('ID'),'width' => 25),
-			'name' => array('title' => $this->l('Name'),'width' => 'auto'),	
-			'acronym' => array('title' => $this->l('Acronym'),'width' => '25'),	
-			'url' => array('title' => $this->l('Url'),'width' => 'auto')
-			));
-
-		$funding_list = FundingAgency::getProjectFundingAgencies($project->id);
-		if($funding_list){
-		$helper = new HelperList();
-		$helper->currentIndex = Context::getContext()->link->getAdminLink('AdminFundingAgencies', false);
-		$helper->token = Tools::getAdminTokenLite('AdminFundingAgencies');
-		$helper->shopLinkType = '';
-		$helper->table = 'funding_agency';
-		$helper->identifier = 'id_funding_agency';
-		$helper->actions = array('edit', 'view');
-		$helper->show_toolbar = false;
-
-		return $helper->generateList($funding_list, $funding_fields_display);
-		}
-		return "No related funding agencies";
-	}
-
-	public function renderProjectInitiativeList($project){
-	
-		$initiative_types_array= array();
-		$initiative_types = InitiativeType::getInitiativeTypes($this->context->language->id);
-		if (!$initiative_types)
-			$this->errors[] = Tools::displayError('No initiative type');
-		else
-			foreach ($initiative_types as $initiative_type)
-				$initiative_types_array[$initiative_type['name']] = $initiative_type['name'];
-
-		$initiative_fields_display = array(
-			'id_initiative' => array('title' => $this->l('ID'),	'width' => 25),
-			'name' => array('title' => $this->l('Name'),'width' => 'auto'),	
-			'acronym' => array(	'title' => $this->l('Acronym'),'width' => '25'),	
-			'initiative_type' => array('title' => $this->l('Type'),'type'  => 'select','list' => $initiative_types_array,'filter_key' => 'itl!name','width' => 'auto'),	
-			'date_add' => array('title' => $this->l('Creation date'),'width' => 150,'type' => 'date','align' => 'right'),
-			'active' => array('title' => $this->l('Enabled'),'width' => 70,'active' => 'status','type' => 'bool','align' => 'center','orderby' => false)
-		);
-
-		$initiative_list = Project::getProjectRelatedInitiativesById($project->id);
-		if($initiative_list){
-		$helper = new HelperList();
-		$helper->currentIndex = Context::getContext()->link->getAdminLink('AdminInitiatives', false);
-		$helper->token = Tools::getAdminTokenLite('AdminInitiatives');
-		$helper->shopLinkType = '';
-		$helper->table = 'initiative';
-		$helper->identifier = 'id_initiative';
-		$helper->actions = array('edit', 'view');
-		$helper->show_toolbar = false;
-
-		return $helper->generateList($initiative_list, $initiative_fields_display);
-		}
-		return "No related initiatives ".$project->id;
-	}
-*/
-
 }
 
 

@@ -48,6 +48,11 @@ class FundingProgramCore extends ObjectModel
 		),
 	);
 
+	/**
+	 * 
+	 * Static function for getting all the funding programs
+	 * 
+	 */
 	public static function getFundingPrograms($id_lang = 0, $id_funding_agency = null)
 	{
 		if (!$id_lang)
@@ -63,12 +68,17 @@ class FundingProgramCore extends ObjectModel
 		{
 			$sql .= ' AND fp.`id_funding_agency` = ' . (int)$id_funding_agency;
 		}
-		$sql .= ' ORDER BY fpl.`name` ASC';//psl.`name` ASC, 
-		//echo $sql . '<br>'; 
+		$sql .= ' ORDER BY fpl.`name` ASC';
+
 		$funding_programs = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 		return $funding_programs;
 	}
 	
+	/**
+	 * 
+	 * Get specific funding program by id
+	 * 
+	 */
 	public static function getFundingProgramById($id_funding_program = null, $id_lang = 0)
 	{
 		if(!$id_funding_program) $id_funding_program=$this->id;
@@ -87,6 +97,11 @@ class FundingProgramCore extends ObjectModel
 		return $funding_program;
 	}
 	
+	/**
+	 * 
+	 * Get funding program
+	 * 
+	 */
 	public static function getFundingProgram($id_funding_program=null, $id_lang = 0)
 	{
 		if(!$id_funding_program) $id_funding_program=$this->id;

@@ -1,48 +1,9 @@
 <?php
 /*
 
-DROP TABLE IF EXISTS `ps_deadline`;
-
-CREATE TABLE `ps_deadline` (
-  `id_deadline` int(11) NOT NULL AUTO_INCREMENT,
-  `id_call` int(11) NOT NULL, 
-  `deadline` datetime NOT NULL,
-  `type` tinyint(1) NOT NULL, 
-  PRIMARY KEY (`id_deadline`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `ps_deadline_lang`;
-
-CREATE TABLE `ps_deadline_lang` (
-  `id_deadline` int(11) NOT NULL AUTO_INCREMENT,
-  `id_lang` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  PRIMARY KEY (`id_deadline`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE IF NOT EXISTS `ps_call` (
-  `id_call` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `id_funding_agency` int(11) unsigned NOT NULL,
-  `id_call_status` int(11) unsigned NOT NULL,
-  `id_call_type` int(11) unsigned NOT NULL,
-  `planed_project_start` datetime NOT NULL,
-  `budget` decimal(10,2) DEFAULT NULL,
-  `repeating` tinyint(1) DEFAULT '0',
-  `url_to_call` text,
-  PRIMARY KEY (`id_Call`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS `ps_call_lang` (
-  `id_call` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `id_lang` int(11) unsigned NOT NULL,
-  `title` text,
-  `description` text,
-  `requirements` text,
-  PRIMARY KEY (`id_call`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+CREATE TABLE IF
 */
 class ApplicationAttachmentCore extends ObjectModel
 {
@@ -72,7 +33,13 @@ class ApplicationAttachmentCore extends ObjectModel
 		),
 	);
 
-		public static function getAttachments($id_lang = 0, $id_application, $include = true)
+	
+	/**
+	 * 
+	 * Get all application's attachemts
+	 * 
+	 */
+	public static function getAttachments($id_lang = 0, $id_application, $include = true)
 	{
 
 		if (!$id_lang)
