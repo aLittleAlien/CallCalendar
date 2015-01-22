@@ -356,7 +356,7 @@ class AdminCustomersController extends AdminCustomersControllerCore
 				array(
 					'type' => 'radio',
 					'label' => $this->l('Subscription:'),
-					'name' => 'active',
+					'name' => 'subscription',
 					'required' => false,
 					'class' => 't',
 					'is_bool' => true,
@@ -372,7 +372,7 @@ class AdminCustomersController extends AdminCustomersControllerCore
 							'label' => $this->l('Disabled')
 						)
 					),
-					'desc' => $this->l('Subscription to notifications about projects:')
+					'desc' => $this->l('Subscription to notifications about new calls:')
 				),	
 				array(
 					'type' => 'textarea',

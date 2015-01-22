@@ -324,6 +324,11 @@ class AdminCallsControllerCore extends AdminController
 		return parent::renderForm();
 	}
 
+	/**
+	 * 
+	 * Overriding function for sending mail notifications when new call is created
+	 * 
+	 */
 	public function processAdd()
 	{
 		parent::processAdd();
@@ -337,10 +342,16 @@ class AdminCallsControllerCore extends AdminController
 
 		$customers = Customer::getCustomers();
 		foreach ($customers as $customer) {
-			$customerKeywords = array_diff( array_map('trim', explode ( ',' , $customer["keywords"])), array(''));
+			
+			//if researcher is not subscribed for receiving notification, skip him
+			if($customer["subscription"] == 0 || $customer["subscription"] == NULL) {
+				continue;
+			}
+
+			$customerKeywords = array_diff( array_map('trim', explode ( ',' , strtolower($customer["keywords"]))), array(''));
 
 			foreach ($callKeywords as $keyword) {
-				if( in_array($keyword, $customerKeywords)) {
+				if( in_array(strtolower($keyword), $customerKeywords)) {
 					
 					//send mail
 					$researchersMail = $customer["email"];
@@ -359,6 +370,8 @@ class AdminCallsControllerCore extends AdminController
 					{
 						$result = $e->getMessage();
 					}
+
+					//TODO do something with result, maybe log it somewhere
 					
 					
 					break;
