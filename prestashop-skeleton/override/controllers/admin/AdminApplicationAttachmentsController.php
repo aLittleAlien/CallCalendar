@@ -10,7 +10,6 @@ class AdminApplicationAttachmentsControllerCore extends AdminController
 		$this->table = 'application_attachment';
 		$this->className = 'ApplicationAttachment';
 		$this->lang = false;
-		//$this->addRowAction('view');
 		$this->addRowAction('edit');
 		$this->addRowAction('delete');
 	 	$this->bulk_actions = array('delete' => array('text' => $this->l('Delete selected'), 'confirm' => $this->l('Delete selected items?')));
@@ -58,7 +57,6 @@ class AdminApplicationAttachmentsControllerCore extends AdminController
 				'filter_key' => 'aa!date_of_upload',
 				'width' => 'auto'
 			) 
-			//TODO add types and / or dates 
 			
         );
 
@@ -73,7 +71,6 @@ class AdminApplicationAttachmentsControllerCore extends AdminController
         if ($this->display == 'edit' || $this->display == 'add' || $this->display == 'list')
 		{
 			$this->addjQueryPlugin(array('autocomplete'));
-            // $this->addJS(array(_PS_JS_DIR_.'admin-projects1.js')); //this is causing problems; probably should delete it 
 		}
 	}
 

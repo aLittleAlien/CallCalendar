@@ -1,31 +1,6 @@
 <?php
 /*
-CREATE TABLE IF NOT EXISTS `ps_project` (
-  `id_project` int(11) NOT NULL AUTO_INCREMENT,
-  `id_project_status` int(11) DEFAULT NULL,
-  `id_project_type` int(11) DEFAULT NULL,
-  `registry_number` varchar(128) COLLATE utf8_swedish_ci DEFAULT NULL,
-  `url` varchar(128) COLLATE utf8_swedish_ci DEFAULT NULL,
-  `date_start` date DEFAULT NULL,
-  `date_end` date DEFAULT NULL,
-  PRIMARY KEY (`id_project`),
-  KEY `FK_project_id_project_status` (`id_project_status`),
-  KEY `FK_project_id_project_type` (`id_project_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
-
-
-CREATE TABLE IF NOT EXISTS `ps_project_lang` (
-  `id_project` int(11) NOT NULL AUTO_INCREMENT,
-  `id_lang` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_swedish_ci NULL,
-  `acronym` varchar(32) COLLATE utf8_swedish_ci NULL,
-  `keywords` text COLLATE utf8_swedish_ci,
-  `partners` text COLLATE utf8_swedish_ci,
-  `overview` text COLLATE utf8_swedish_ci,
-  `results` text COLLATE utf8_swedish_ci,
-  `future_work` text COLLATE utf8_swedish_ci,
-  PRIMARY KEY (`id_project`,`id_lang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+CREATE TABLE IF NOT EXISTS 
 
 */
 class ApplicationCore extends ObjectModel
@@ -92,6 +67,11 @@ class ApplicationCore extends ObjectModel
 		),
 	);
 
+	/**
+	* Get all applications
+	*
+	* @return array of Applications 
+	*/
 	public static function getApplications($id_lang = 0, $id_member = null, $id_status = null, $id_partner=null)
 	{
 		if (!$id_lang)
@@ -133,8 +113,8 @@ class ApplicationCore extends ObjectModel
 			$sql.=' AND ap.`id_partner`='.(int)$id_partner;
 		}
 		
-		$sql .= ' ORDER BY ptl.`name` ASC';//psl.`name` ASC, 
-		//echo $sql . '<br>'; 
+		$sql .= ' ORDER BY ptl.`name` ASC';
+
 		$applications = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 		
 		foreach ($applications as $k => $application)
@@ -143,38 +123,12 @@ class ApplicationCore extends ObjectModel
 		return $applications;
 	}
 	
-	// public static function getNumberOfProjects($id_lang = 0, $id_shop = null, $active = true)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-		
-	// 	$sql = 'SELECT DISTINCT p.*
-	// 	FROM `'._DB_PREFIX_.'project` p
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_lang` AS pl ON (p.`id_project` = pl.`id_project` AND pl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status` ps ON p.`id_project_status` = ps.`id_project_status`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status_lang` psl ON psl.`id_project_status` = ps.`id_project_status`';		
-		
-	// 	if ($active)
-	// 	{	
-	// 		$sql.=' WHERE psl.name = ';
-	// 		$sql.=' "active"';
-	// 	}
-		
-	// 	if ($id_shop)
-	// 	{
-	// 		$sql .= ' AND p.id_project IN (
-	// 		SELECT DISTINCT p.`id_project`
-	// 		FROM `'._DB_PREFIX_.'project` p
-	// 		LEFT OUTER JOIN `'._DB_PREFIX_.'project_initiative` AS pi ON (p.`id_project` = pi.`id_project`)
-	// 		LEFT JOIN `'._DB_PREFIX_.'initiative` AS i ON (pi.`id_initiative` = i.`id_initiative`)
-	// 		WHERE i.`id_shop` = '.(int)$id_shop.')';
-	// 	}
-	// 	//echo $sql . '<br>'; 
-	// 	$projects = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
-		
-	// 	return count($projects);
-	// }
 	
+	/**
+	* Get Application by Id
+	*
+	* @return Application 
+	*/
 	public static function getApplicationById($id_application = null, $id_lang = 0)
 	{
 		if(!$id_application) $id_application=$this->id;
@@ -202,18 +156,12 @@ class ApplicationCore extends ObjectModel
 		return $application;
 	}
 	
-	// public static function getProjectShop($id_project = null)
-	// {
-	// 	if(!$id_project) $id_project=$this->id;		
-	// 	$sql = 'SELECT i.id_shop
-	// 	FROM `'._DB_PREFIX_.'project` p
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_initiative` AS pi ON (p.`id_project` = pi.`id_project`)
-	// 	LEFT JOIN `'._DB_PREFIX_.'initiative` AS i ON (pi.`id_initiative` = i.`id_initiative`)
-	// 	WHERE i.`id_shop` > 0 and p.`id_project` = '.$id_project;
-		
-	// 	return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);	
-	// }
 	
+	/**
+	* Static function for getting all application's members
+	*
+	* @return application's members 
+	*/
 	public static function getApplicationRelatedMembersById($id_application)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -225,64 +173,12 @@ class ApplicationCore extends ObjectModel
 			ORDER BY c.`firstname`, c.`lastname`');
 	}
 	
-	// public static function getProject($id_project=null, $id_lang = 0)
-	// {
-	// 	if(!$id_project) $id_project=$this->id;
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-	// 	return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-	// 	SELECT DISTINCT p.*, pl.`name`, pl.`acronym`, pl.`keywords`, pl.`overview`, pl.`results`, pl.`future_work`, ptl.`name` AS type, psl.`name` AS status
-	// 	FROM `'._DB_PREFIX_.'project` p
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_lang` AS pl ON (p.`id_project` = pl.`id_project` AND pl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type` pt ON p.`id_project_type` = pt.`id_project_type`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type_lang` ptl ON (ptl.`id_project_type` = pt.`id_project_type` AND ptl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status` ps ON p.`id_project_status` = ps.`id_project_status`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status_lang` psl ON psl.`id_project_status` = ps.`id_project_status`			
-	// 	WHERE p.`id_project` = '.$id_project.'
-	// 	ORDER BY ptl.`name`, p.`id_project` ASC');
-	// }
-
-	// public static function getProjectsExcludingSelfStatic($id_lang = 0, $id_project)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-	// 	return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-	// 	SELECT DISTINCT p.*, pl.`name`, pl.`acronym`, pl.`keywords`, pl.`overview`, pl.`results`, pl.`future_work`, ptl.`name` AS type, psl.`name` AS status
-	// 	FROM `'._DB_PREFIX_.'project` p
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_lang` AS pl ON (p.`id_project` = pl.`id_project` AND pl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type` pt ON p.`id_project_type` = pt.`id_project_type`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type_lang` ptl ON (ptl.`id_project_type` = pt.`id_project_type` AND ptl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status` ps ON p.`id_project_status` = ps.`id_project_status`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status_lang` psl ON psl.`id_project_status` = ps.`id_project_status`			
-	// 	WHERE p.`id_project` <> '.$id_project.'
-	// 	ORDER BY ptl.`name`, p.`id_project` ASC');
-	// }
 	
-
-	// public static function getProjectRelatedInitiativesById($id_project,$id_lang=null)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-			
-	// 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-	// 		SELECT i.*, il.`name`, il.`acronym`, il.`focus`, il.`description`, itl.`name` AS initiative_type
-	// 		FROM '._DB_PREFIX_.'project_initiative pi
-	// 		LEFT JOIN `'._DB_PREFIX_.'initiative` AS i ON pi.`id_initiative` = i.`id_initiative`
-	// 		LEFT JOIN `'._DB_PREFIX_.'initiative_lang` AS il ON (pi.`id_initiative` = il.`id_initiative` AND il.`id_lang` = '.(int)$id_lang.')
-	// 		LEFT JOIN `'._DB_PREFIX_.'initiative_type_lang` AS itl ON (i.`id_initiative_type` = itl.`id_initiative_type` AND itl.`id_lang` = '.(int)$id_lang.')
-	// 		WHERE pi.`id_project` = '.(int)$id_project);
-	// }
-		
-	// public function getProjectRelatedInitiatives()
-	// {
-	// 	return Project::getProjectRelatedInitiativesById((int)$this->id,null);
-	// }
-
-	// public function getProjectRelatedFundingAgencies()
-	// {
-	// 	return FundingAgency::getProjectFundingAgencies((int)$this->id,null);
-	// }
-	
+	/**
+	* Static function for getting all application's partners
+	*
+	* @return application's partners 
+	*/
 	public function getApplicationRelatedPartners($id_application = null, $id_lang = null)
 	{
 			if(!$id_application)
@@ -302,79 +198,9 @@ class ApplicationCore extends ObjectModel
 	}
 	
 
-	// public static function getApplicationRelatedPartnersStatic($id_application , $id_lang = null)
-	// {
+	
 
-	// }
-	
-	//TODO maybe implement later if needed
-	// public static function getPartnerRelatedProjects($partner_id,$id_lang = 0)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-	// 	return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-	// 	SELECT DISTINCT p.*, pl.`name`, pl.`acronym`, pl.`keywords`, pl.`overview`, pl.`results`, pl.`future_work`, ptl.`name` AS type, psl.`name` AS status
-	// 	FROM `'._DB_PREFIX_.'project` p
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_lang` AS pl ON (p.`id_project` = pl.`id_project` AND pl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type` pt ON p.`id_project_type` = pt.`id_project_type`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_type_lang` ptl ON (ptl.`id_project_type` = pt.`id_project_type` AND ptl.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status` ps ON p.`id_project_status` = ps.`id_project_status`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_status_lang` psl ON psl.`id_project_status` = ps.`id_project_status`
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_partner` pp ON (pp.`id_project` = p.`id_project` AND pp.`id_partner`='.(int)$partner_id.')
-	// 	ORDER BY ptl.`name`, p.`id_project` ASC');
-	// }
-	
-	// public static function getInitiativeRelatedProjectsById($id_initiative, $id_lang = null)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-			
-	// 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
-	// 		SELECT p.*, pl.`name`, pl.`acronym`, pl.`keywords`, pl.`overview`, pl.`results`, pl.`future_work`, psl.`name` AS status
-	// 		FROM '._DB_PREFIX_.'project_initiative pi
-	// 		LEFT JOIN `'._DB_PREFIX_.'project` AS p ON pi.`id_project` = p.`id_project`
-	// 		LEFT JOIN `'._DB_PREFIX_.'project_lang` AS pl ON (pi.`id_project` = pl.`id_project` AND pl.`id_lang` = '.(int)$id_lang.')
-	// 		LEFT JOIN `'._DB_PREFIX_.'project_status` ps ON p.`id_project_status` = ps.`id_project_status`
-	// 		LEFT JOIN `'._DB_PREFIX_.'project_status_lang` psl ON psl.`id_project_status` = ps.`id_project_status`
-	// 		WHERE pi.`id_initiative` = '.(int)$id_initiative.'
-	// 		ORDER BY psl.`name` ASC, pl.`name` ASC');
-	// }
-		
-	// public function getInitiativeRelatedProjects($id_initiative)
-	// {
-	// 	return Project::getInitiativeRelatedProjectsById($id_initiative, $id_lang = null);
-	// }
-	
-	// public static function getRelatedInitiativesByType($id_lang = null, $id_shop = null, $id_project, $type)
-	// {
-	// 	if (!$id_lang)
-	// 		$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-	// 	$sql = '
-	// 	SELECT DISTINCT i.*, il.`name`
-	// 	FROM `'._DB_PREFIX_.'initiative` i
-	// 	LEFT JOIN `'._DB_PREFIX_.'project_initiative` AS pi ON (i.`id_initiative` = pi.`id_initiative`)
-	// 	LEFT JOIN `'._DB_PREFIX_.'initiative_lang` AS il ON (i.`id_initiative` = il.`id_initiative` AND il.`id_lang` = '.(int)$id_lang.')
-	// 	LEFT JOIN `'._DB_PREFIX_.'initiative_type` it ON i.`id_initiative_type` = it.`id_initiative_type`
-	// 	LEFT JOIN `'._DB_PREFIX_.'initiative_type_lang` itl ON (itl.`id_initiative_type` = it.`id_initiative_type` AND itl.`id_lang` = '.(int)$id_lang.')		
-	// 	WHERE i.`active` = 1 
-	// 	AND itl.`name` = "'.$type.'"'; 
-		
-	// 	if ($id_shop)
-	// 	{
-	// 		$sql .= ' AND i.id_initiative IN (
-	// 		SELECT DISTINCT ir.`id_initiative_2`
-	// 		FROM `'._DB_PREFIX_.'initiative_relationship` ir
-	// 		LEFT JOIN `'._DB_PREFIX_.'initiative` AS i ON (ir.`id_initiative_1` = i.`id_initiative`)
-	// 		WHERE i.`id_shop` = '.(int)$id_shop.')';
-	// 	}
-	// 	$sql .= ' AND pi.`id_project` = '.$id_project.' 
-	// 	ORDER BY il.`name` ASC';
-		
-	// 	$result = Db::getInstance()->executeS($sql);
-	// 	return $result;
-	// }	
-
-	
+	//update application's partners, members, leaders and associated before adding new application
 	public function add($autodate = true, $null_values = true)
 	{
 		$success = parent::add($autodate, $null_values);
@@ -384,6 +210,7 @@ class ApplicationCore extends ObjectModel
 		return $success;
 	}
 
+	//update application's partners, members, leaders and associated before updating application
 	public function update($nullValues = false)
 	{
 		if (Context::getContext()->controller->controller_type == 'admin')
@@ -393,6 +220,8 @@ class ApplicationCore extends ObjectModel
 		}
 		return parent::update(true);
 	}
+
+	//delete application's partners, members, leaders and associated before deleting application
 	public function delete()
 	{
 		if (parent::delete())
@@ -405,23 +234,22 @@ class ApplicationCore extends ObjectModel
 		return false;
 	}
 
-	
-	// public function cleanProjectInitiatives()
-	// {
-	// 	Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'project_initiative` WHERE `id_project` = '.(int)$this->id);
-	// }
-	
-	// public function cleanProjectFundingAgencies()
-	// {
-	// 	Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'project_funding_agency` WHERE `id_project` = '.(int)$this->id);
-	// }
-	
+	/**
+	 * 
+	 * Delete application's partners
+	 * 
+	 */
 	public function cleanApplicationPartners()
 	{
 		Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'application_partner` WHERE `id_application` = '.(int)$this->id);
 	}
 	
-	//TODO usage line 394
+
+	/**
+	 * 
+	 * Delete application's relationships, in this case only partners
+	 * 
+	 */
 	public function cleanApplicationRelationships()
 	{
 		
@@ -429,18 +257,14 @@ class ApplicationCore extends ObjectModel
 
 
 	}
-	// public function updateProjectInitiatives($list)
-	// {
-	// 	$this->cleanProjectInitiatives();
-	// 	if ($list && !empty($list))
-	// 		$this->addProjectInitiatives($list);
-	// }
-	// public function updateProjectFundingAgencies($list)
-	// {
-	// 	$this->cleanProjectFundingAgencies();
-	// 	if ($list && !empty($list))
-	// 		$this->addProjectFundingAgencies($list);
-	// }
+	
+	/**
+	 * 
+	 * Delete application's partners and then add new ones
+	 * 
+	 * @param list new partners
+	 * 
+	 */
 	public function updateApplicationPartners($list)
 	{
 		$this->cleanApplicationPartners();
@@ -448,7 +272,13 @@ class ApplicationCore extends ObjectModel
 			$this->addApplicationPartners($list);
 	}
 
-	//TODO change function parameters (see line 375)
+	/**
+	 * 
+	 * Delete application's relationships and then add new ones (only partners)
+	 * 
+	 * @param list new partners
+	 * 
+	 */
 	public function updateApplicationRelationships($partner_list)
 	{
 		$this->cleanApplicationRelationships();
@@ -457,24 +287,14 @@ class ApplicationCore extends ObjectModel
 			$this->addApplicationPartners($partner_list);
 	}
 	
-	// public function addProjectInitiatives($initiatives)
-	// {
-	// 	foreach ($initiatives as $initiative)
-	// 	{
-	// 		$row = array('id_project' => (int)$this->id, 'id_initiative' => (int)$initiative);
-	// 		Db::getInstance()->insert('project_initiative', $row);
-	// 	}
-	// }
 	
-	// public function addProjectFundingAgencies($funding_agencies)
-	// {
-	// 	foreach ($funding_agencies as $funding_agency)
-	// 	{
-	// 		$row = array('id_project' => (int)$this->id, 'id_funding_agency' => (int)$funding_agency);
-	// 		Db::getInstance()->insert('project_funding_agency', $row);
-	// 	}
-	// }
-	
+	/**
+	 * 
+	 * Add aplication partners
+	 * 
+	 * @param list new partners
+	 * 
+	 */
 	public function addApplicationPartners($partners)
 	{
 		foreach ($partners as $partner)
@@ -484,6 +304,11 @@ class ApplicationCore extends ObjectModel
 		}
 	}
 
+	/**
+	* Static function for getting all application's leaders
+	*
+	* @return application's leaders 
+	*/
 	public static function getLeadersStatic($id_application)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -493,11 +318,21 @@ class ApplicationCore extends ObjectModel
 			WHERE ca.`id_role` = 1 AND ca.`id_application` = '.(int)$id_application);
 	}
 	
+	/**
+	* Get all application's leaders
+	*
+	* @return application's leaders 
+	*/
 	public function getLeaders()
 	{
 		return Application::getLeadersStatic((int)$this->id);
 	}
 
+	/**
+	* Static function for getting all application's members
+	*
+	* @return application's members 
+	*/
 	public static function getMembersStatic($id_application)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -507,11 +342,21 @@ class ApplicationCore extends ObjectModel
 			WHERE ca.`id_role` = 2 AND ca.`id_application` = '.(int)$id_application);
 	}
 	
+	/**
+	* Get all application's members
+	*
+	* @return application's members 
+	*/
 	public function getMembers()
 	{
 		return Application::getMembersStatic((int)$this->id);
 	}
 
+	/**
+	* Static function for getting all application's associated
+	*
+	* @return application's associated 
+	*/
 	public static function getAssociatedStatic($id_application)
 	{
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
@@ -521,13 +366,18 @@ class ApplicationCore extends ObjectModel
 			WHERE ca.`id_role` = 3 AND ca.`id_application` = '.(int)$id_application);
 	}
 	
+	/**
+	* Get all application's associated
+	*
+	* @return application's associated 
+	*/
 	public function getAssociated()
 	{
 		return Application::getAssociatedStatic((int)$this->id);
 	}	
 	
 	/**
-	 * Update associated
+	 * Update application staff (leaders, members, associated)
 	 */
 	public function updateStaff($inputLeaders, $inputMembers, $inputAssociated)
 	{
@@ -551,11 +401,17 @@ class ApplicationCore extends ObjectModel
 		$this->addStaff($leaders, $members, $associated);
 	}
 
+	/**
+	 * Clean application staff (leaders, members, associated)
+	 */
 	public function cleanStaff()
 	{
 		Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'customer_application` WHERE `id_application` = '.(int)$this->id);
 	}
 
+	/**
+	 * Add application staff (leaders, members, associated)
+	 */
 	public function addStaff($leaders, $members, $associated)
 	{
 		if ($leaders && !empty($leaders)){
@@ -587,6 +443,11 @@ class ApplicationCore extends ObjectModel
 		}
 	}
 
+	/**
+	 * 
+	 * Get id of funding agency connected to this application
+	 * 
+	 */
 	public static function getFundingAgencyIdStatic($id_application) 
 	{
 		$sql = '
@@ -601,6 +462,13 @@ class ApplicationCore extends ObjectModel
 
 	}
 
+	/**
+	 * 
+	 * Static function to get id of partners connected to application
+	 * 
+	 * @param id_application Id of application
+	 * 
+	 */
 	public static function getPartnersIdStatic($id_application) 
 	{
 		$sql = '
@@ -615,6 +483,13 @@ class ApplicationCore extends ObjectModel
 
 	}
 
+	/**
+	 * 
+	 * Static function to change status of application to granted
+	 * 
+	 * @param id_application 
+	 * 
+	 */
 	public static function updateApplicationStatusToGrantedStatic($id_application) 
 	{
 		Db::getInstance()->update('application', array(
@@ -623,6 +498,13 @@ class ApplicationCore extends ObjectModel
 	}
 
 
+	/**
+	 * 
+	 * Create project from application
+	 * 
+	 * @param id_application
+	 * 
+	 */
 	public static function createProject($id_application) 
 	{
 
@@ -664,9 +546,6 @@ class ApplicationCore extends ObjectModel
 		
 		$project->addProjectFundingAgencies(Application::getFundingAgencyIdStatic($id_application));
 
-		// var_dump(Application::getPartnersIdStatic($id_application));
-		// var_dump(Project::getLeadersStatic(336));
-
 		$project->addProjectPartnersModified(Application::getPartnersIdStatic($id_application));
 
 
@@ -683,7 +562,7 @@ class ApplicationCore extends ObjectModel
 
 		$news->content = 'automatically generated';
 
-		$news->id_contact = 0; //TODO maybe change this
+		$news->id_contact = 0; //TODO set to 0 because it is required field but we dont know actual contact person; maybe think of something better
 
 
 

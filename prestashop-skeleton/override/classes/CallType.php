@@ -1,26 +1,6 @@
 <?php
 /*
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ps_project_type`
---
---
-
-CREATE TABLE IF NOT EXISTS `ps_project_type` (
-  `id_project_type` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_project_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=1 ;
-
--- Table structure for table `ps_project_type_lang`
-
-CREATE TABLE IF NOT EXISTS `ps_project_type_lang` (
-  `id_project_type` int(11) NOT NULL AUTO_INCREMENT,
-  `id_lang` int(11) NOT NULL,
-  `name` varchar(128) COLLATE utf8_swedish_ci NOT NULL,
-  PRIMARY KEY (`id_project_type`,`id_lang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 
 

@@ -10,6 +10,7 @@ class AdminFundingAgencyProjectKindsControllerCore extends AdminController
 		$this->table = 'funding_agency_project_kind';
 		$this->className = 'FundingAgencyProjectKind';
 		$this->lang = true;
+		$this->allow_export = true;
 		//$this->addRowAction('view');
 		$this->addRowAction('edit');
 		$this->addRowAction('delete');
