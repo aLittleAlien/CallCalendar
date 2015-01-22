@@ -28,7 +28,7 @@ class DeadlineCore extends ObjectModel
 		'fields' => array(
 	
 			'id_call' => array('type' => self::TYPE_INT,  'required' => true,'validate' => 'isUnsignedId'),
-			'deadline' => 	array('type' => self::TYPE_DATE),		
+			'deadline' => 	array('type' => self::TYPE_DATE, 'required' => true),		
 			'type' =>	array('type' => self::TYPE_BOOL),
 
 			//Lang fields

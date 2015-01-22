@@ -77,8 +77,8 @@ class CallCore extends ObjectModel
 
 			//Lang fields
 			'title' => 				array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isString', 'required' => true, 'size' => 255),
-			'description' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
-			'keywords' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
+			'description' =>		array('type' => self::TYPE_HTML, 'lang' => true, 'required' => true, 'validate' => 'isCleanHtml'),
+			'keywords' =>		array('type' => self::TYPE_HTML, 'lang' => true, 'required' => true, 'validate' => 'isCleanHtml'),
 			'requirements' =>		array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
 
 		),
