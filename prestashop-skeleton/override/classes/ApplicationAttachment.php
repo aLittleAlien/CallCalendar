@@ -28,8 +28,8 @@ class ApplicationAttachmentCore extends ObjectModel
 			'id_application' => array('type' => self::TYPE_INT,  'required' => true,'validate' => 'isUnsignedId'),
 			'id_attachment' => array('type' => self::TYPE_INT,  'required' => true,'validate' => 'isUnsignedId'),
 			'id_application_attachment' => array('type' => self::TYPE_INT,  'required' => false,'validate' => 'isUnsignedId'),
-			'description' => 				array('type' => self::TYPE_HTML, 'validate' => 'isCleanHtml'),
-			'date_of_upload' => 	array('type' => self::TYPE_DATE,'validate' => 'isDate'),
+			'description' => 				array('type' => self::TYPE_HTML, 'required' => true, 'validate' => 'isCleanHtml'),
+			'date_of_upload' => 	array('type' => self::TYPE_DATE, 'required' => true, 'validate' => 'isDate'),
 		),
 	);
 

@@ -100,7 +100,7 @@ class AdminDeadlinesControllerCore extends AdminController
 		
 		$this->fields_form = array(
 			'legend' => array(
-				'title' => $this->l('deadlines'),
+				'title' => $this->l('Deadlines'),
 				'image' => '../img/admin/date.png'
 			),
 			'input' => array(

@@ -30,7 +30,7 @@ class CallAttachmentCore extends ObjectModel
 			'id_call_attachment' => array('type' => self::TYPE_INT,  'required' => false,'validate' => 'isUnsignedId'),
 
 			
-			'date_of_upload' => 	array('type' => self::TYPE_DATE,'validate' => 'isDate'),
+			'date_of_upload' => 	array('type' => self::TYPE_DATE,'required' => true, 'validate' => 'isDate'),
 
 
 		),

@@ -60,7 +60,7 @@ class ApplicationCore extends ObjectModel
 			'mdhPartBudget' => array('type' => self::TYPE_INT, 'validate' => 'isInt'),
 			// Lang fields
 			'name' => 				array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isString', 'required' => true, 'size' => 255),
-			'acronym' => 			array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isString', 'size' => 32),
+			'acronym' => 			array('type' => self::TYPE_STRING, 'lang' => true, 'validate' => 'isString', 'required' => true, 'size' => 32),
 			'keywords' => 			array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml'),
 			'overview' =>			array('type' => self::TYPE_HTML, 'lang' => true,'validate' => 'isCleanHtml')
 			
@@ -560,7 +560,7 @@ class ApplicationCore extends ObjectModel
 
 		$news->id_news_and_events_scope = 1; //od for public in news_and_events_scope table
 
-		$news->content = 'automatically generated';
+		$news->content = array((int)Configuration::get('PS_LANG_DEFAULT') => $application['overview']);;
 
 		$news->id_contact = 0; //TODO set to 0 because it is required field but we dont know actual contact person; maybe think of something better
 
