@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 10:51:30
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\list\list_header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11030547845a2d7b217-79645767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:36
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\list\list_header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:14828547b525c2f6806-54798489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> call
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +17,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
+<<<<<<< HEAD
   'nocache_hash' => '11030547845a2d7b217-79645767',
+=======
+  'nocache_hash' => '14828547b525c2f6806-54798489',
+>>>>>>> call
   'function' => 
   array (
   ),
@@ -51,9 +61,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
+<<<<<<< HEAD
   'unifunc' => 'content_547845a320d685_87317754',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_547845a320d685_87317754')) {function content_547845a320d685_87317754($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+  'unifunc' => 'content_547b525c538a88_15434012',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_547b525c538a88_15434012')) {function content_547b525c538a88_15434012($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?>
 
 <?php if (!$_smarty_tpl->tpl_vars['simple_header']->value){?>

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 14:01:40
+<?php /* Smarty version Smarty-3.1.13, created on 2014-12-01 14:58:08
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\default\template\controllers\login\content.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1012754787234afc696-87263375%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1381547c73f0674674-57179526%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1012754787234afc696-87263375',
+  'nocache_hash' => '1381547c73f0674674-57179526',
   'function' => 
   array (
   ),
@@ -30,9 +30,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_54787234ba07b9_99834963',
+  'unifunc' => 'content_547c73f07688b8_39649906',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54787234ba07b9_99834963')) {function content_54787234ba07b9_99834963($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_547c73f07688b8_39649906')) {function content_547c73f07688b8_39649906($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
 if (!is_callable('smarty_modifier_date_format')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.date_format.php';
 ?>
 <script type="text/javascript">

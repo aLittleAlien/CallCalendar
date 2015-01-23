@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:08
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2990854785ea0ed6217-05782575%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:57
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:10571547b5271abbae6-26897270%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> call
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -53,7 +59,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
+<<<<<<< HEAD
   'nocache_hash' => '2990854785ea0ed6217-05782575',
+=======
+  'nocache_hash' => '10571547b5271abbae6-26897270',
+>>>>>>> call
   'function' => 
   array (
   ),
@@ -104,9 +114,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
+<<<<<<< HEAD
   'unifunc' => 'content_54785ea19b1df5_58543052',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54785ea19b1df5_58543052')) {function content_54785ea19b1df5_58543052($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+  'unifunc' => 'content_547b52725b2c41_34444354',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_547b52725b2c41_34444354')) {function content_547b52725b2c41_34444354($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?>
 
 <?php if ($_smarty_tpl->tpl_vars['show_toolbar']->value){?>
@@ -695,8 +711,13 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 									<?php $_smarty_tpl->tpl_vars['initiatives'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_profile.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_profile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea14f6de5_93870194($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_profile.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b52720bd2a6_71175306($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_profile.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='customer_initiative'){?>
 									<?php $_smarty_tpl->tpl_vars['initiatives'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
@@ -719,15 +740,25 @@ $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/for
 									<?php $_smarty_tpl->tpl_vars['project_kinds'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['project_kinds'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_funding_agency.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_funding_agency.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea1568277_07951054($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_funding_agency.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b527212e739_15702673($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_funding_agency.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='project'){?>
 									<?php $_smarty_tpl->tpl_vars['projects'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_project.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea15a6a84_53112865($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b5272170dc0_93839879($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_project.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='supervision_main'){?>
 									<?php $_smarty_tpl->tpl_vars['id_supervisor'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['supervisor'], null, 0);?>
@@ -771,24 +802,39 @@ $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/for
 									<?php $_smarty_tpl->tpl_vars['leaders'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_project_leaders.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_leaders.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea1656737_53529058($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_leaders.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b527222c5f5_32491492($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_project_leaders.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='project_members'){?>
 									<?php $_smarty_tpl->tpl_vars['id_project'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['project'], null, 0);?>
 									<?php $_smarty_tpl->tpl_vars['members'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_project_members.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_members.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea16a4942_28345408($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_members.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b5272282504_61154348($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_project_members.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='project_associated'){?>
 									<?php $_smarty_tpl->tpl_vars['id_project'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['project'], null, 0);?>
 									<?php $_smarty_tpl->tpl_vars['associated'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_project_associated.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_associated.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '2990854785ea0ed6217-05782575');
 content_54785ea16f69d2_16269099($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_project_associated.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0, '10571547b5271abbae6-26897270');
+content_547b52722d8428_42261347($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_project_associated.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='people'){?>
 									<?php $_smarty_tpl->tpl_vars['people'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
@@ -815,8 +861,13 @@ $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/for
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='categories'){?>
 									<?php /*  Call merged included template "helpers/form/form_category.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
+<<<<<<< HEAD
  $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_category.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('categories'=>$_smarty_tpl->tpl_vars['input']->value['values']), 0, '2990854785ea0ed6217-05782575');
 content_54785ea177b6f5_53265203($_smarty_tpl);
+=======
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_category.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('categories'=>$_smarty_tpl->tpl_vars['input']->value['values']), 0, '10571547b5271abbae6-26897270');
+content_547b5272360fc2_58775735($_smarty_tpl);
+>>>>>>> call
 $_smarty_tpl = array_pop($_tpl_stack); /*  End of included template "helpers/form/form_category.tpl" */?>
 								<?php }elseif($_smarty_tpl->tpl_vars['input']->value['type']=='categories_select'){?>
 									<?php echo $_smarty_tpl->tpl_vars['input']->value['category_tree'];?>
@@ -1074,9 +1125,15 @@ $_smarty_tpl->tpl_vars['language']->_loop = true;
 	
 	</script>
 <?php }?>
+<<<<<<< HEAD
 <?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_profile.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea14f6de5_93870194')) {function content_54785ea14f6de5_93870194($_smarty_tpl) {?>
+=======
+<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_profile.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b52720bd2a6_71175306')) {function content_547b52720bd2a6_71175306($_smarty_tpl) {?>
+>>>>>>> call
 
 <?php if (count($_smarty_tpl->tpl_vars['initiatives']->value)&&isset($_smarty_tpl->tpl_vars['initiatives']->value)){?>
 <div style="max-height:250px;width:60em;overflow:auto;margin-bottom:20px;">
@@ -1117,9 +1174,15 @@ $_smarty_tpl->tpl_vars['initiative']->_loop = true;
 </p>
 <?php }?>
 
+<<<<<<< HEAD
 <?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_funding_agency.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea1568277_07951054')) {function content_54785ea1568277_07951054($_smarty_tpl) {?>
+=======
+<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_funding_agency.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b527212e739_15702673')) {function content_547b527212e739_15702673($_smarty_tpl) {?>
+>>>>>>> call
 
 <?php if (count($_smarty_tpl->tpl_vars['funding_agencies']->value)&&isset($_smarty_tpl->tpl_vars['funding_agencies']->value)){?>
 <div class="tableContainer">
@@ -1163,9 +1226,15 @@ $_smarty_tpl->tpl_vars['funding_agency']->_loop = true;
 <?php }else{ ?>
 <p><?php echo smartyTranslate(array('s'=>'No funding agencies created'),$_smarty_tpl);?>
 </p>
+<<<<<<< HEAD
 <?php }?><?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea15a6a84_53112865')) {function content_54785ea15a6a84_53112865($_smarty_tpl) {?>
+=======
+<?php }?><?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b5272170dc0_93839879')) {function content_547b5272170dc0_93839879($_smarty_tpl) {?>
+>>>>>>> call
 
 <?php if (count($_smarty_tpl->tpl_vars['projects']->value)&&isset($_smarty_tpl->tpl_vars['projects']->value)){?>
 
@@ -1254,9 +1323,15 @@ $_smarty_tpl->tpl_vars['project']->_loop = true;
 <?php }else{ ?>
 <p><?php echo smartyTranslate(array('s'=>'No projects created'),$_smarty_tpl);?>
 </p>
+<<<<<<< HEAD
 <?php }?><?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_leaders.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea1656737_53529058')) {function content_54785ea1656737_53529058($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+<?php }?><?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_leaders.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b527222c5f5_32491492')) {function content_547b527222c5f5_32491492($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?><table>
 	<tr>
 		<td style="padding-bottom:5px;">
@@ -1319,9 +1394,15 @@ $_smarty_tpl->tpl_vars['person']->_loop = true;
 	</tr>
 </table>
 			
+<<<<<<< HEAD
 			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_members.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea16a4942_28345408')) {function content_54785ea16a4942_28345408($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_members.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b5272282504_61154348')) {function content_547b5272282504_61154348($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?><table>
 	<tr>
 		<td style="padding-bottom:5px;">
@@ -1384,9 +1465,15 @@ $_smarty_tpl->tpl_vars['person']->_loop = true;
 	</tr>
 </table>
 			
+<<<<<<< HEAD
 			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_associated.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea16f69d2_16269099')) {function content_54785ea16f69d2_16269099($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_project_associated.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b52722d8428_42261347')) {function content_547b52722d8428_42261347($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?><table>
 	<tr>
 		<td style="padding-bottom:5px;">
@@ -1449,9 +1536,15 @@ $_smarty_tpl->tpl_vars['person']->_loop = true;
 	</tr>
 </table>
 			
+<<<<<<< HEAD
 			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 12:38:09
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_category.tpl" */ ?>
 <?php if ($_valid && !is_callable('content_54785ea177b6f5_53265203')) {function content_54785ea177b6f5_53265203($_smarty_tpl) {?><?php if (!is_callable('smarty_function_implode')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\function.implode.php';
+=======
+			<?php }} ?><?php /* Smarty version Smarty-3.1.13, created on 2014-11-30 18:22:58
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\idt\template\helpers\form\form_category.tpl" */ ?>
+<?php if ($_valid && !is_callable('content_547b5272360fc2_58775735')) {function content_547b5272360fc2_58775735($_smarty_tpl) {?><?php if (!is_callable('smarty_function_implode')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\function.implode.php';
+>>>>>>> call
 ?>
 <?php if (count($_smarty_tpl->tpl_vars['categories']->value)&&isset($_smarty_tpl->tpl_vars['categories']->value)){?>
 	<script type="text/javascript">

@@ -29,6 +29,8 @@ class Customer extends CustomerCore
 	public $inputMainSupervision;
 	public $inputAssistantSupervision;
 	public $initiativeRoleSelect;
+	public $subscription;
+	public $keywords;
 				
 	public static $definition = array(
 		'table' => 'customer',
@@ -88,7 +90,10 @@ class Customer extends CustomerCore
 			'duties' => 					array('type' => self::TYPE_HTML, 'lang' => true, 'validate' => 'isCleanHtml', 'required' => false,  'size' => 3999999999999),
 			'misc' =>	 					array('type' => self::TYPE_HTML, 'lang' => true, 'validate' => 'isCleanHtml', 'required' => false, 'size' => 3999999999999),
 			'external' => 					array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
-			'away' =>	 					array('type' => self::TYPE_BOOL, 'validate' => 'isBool')
+			'away' =>	 					array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
+			'subscription' =>	 			array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
+			'keywords' => 					array('type' => self::TYPE_HTML, 'lang' => true, 'validate' => 'isCleanHtml', 'required' => false, 'size' => 3999999999999),
+			
 		),
 	);				
 
@@ -157,9 +162,10 @@ class Customer extends CustomerCore
 		if (!$id_lang)
 			$id_lang = (int)Configuration::get('PS_LANG_DEFAULT');
 		
-		$sql = 'SELECT c.`id_customer`, `email`,`url_private`, `firstname`, `lastname`, `phone`, `room`, GROUP_CONCAT(pl.`name` order by pl.name separator ",") as title
+		$sql = 'SELECT c.`id_customer`, `email`,`url_private`, `firstname`, `lastname`, `phone`, `room`, GROUP_CONCAT(pl.`name` order by pl.name separator ",") as title, cl.`keywords`, c.`subscription`
 			FROM `'._DB_PREFIX_.'customer` c
 			LEFT JOIN `'._DB_PREFIX_.'customer_position` AS pcp ON (pcp.id_customer=c.id_customer and (pcp.date_end is null or pcp.date_end=0 or pcp.date_end>curdate()))
+			LEFT JOIN `'._DB_PREFIX_.'customer_lang` AS cl ON (c.`id_customer` = cl.`id_customer` AND cl.`id_lang` = '.(int)$id_lang.')
 			LEFT JOIN `'._DB_PREFIX_.'position_lang` AS pl ON (pcp.`id_position` = pl.`id_position` AND pl.`id_lang` = '.(int)$id_lang.')';
 		if ($id_initiative)
 		{

@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php /* Smarty version Smarty-3.1.13, created on 2014-11-28 14:01:40
          compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\default\template\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2205354787234d0fb17-44374933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+=======
+<?php /* Smarty version Smarty-3.1.13, created on 2014-12-01 14:58:08
+         compiled from "C:\xampp\htdocs\CallCalendar\prestashop-skeleton\back-office\themes\default\template\header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3819547c73f093d4c3-04944702%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+>>>>>>> call
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +17,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
+<<<<<<< HEAD
   'nocache_hash' => '2205354787234d0fb17-44374933',
+=======
+  'nocache_hash' => '3819547c73f093d4c3-04944702',
+>>>>>>> call
   'function' => 
   array (
   ),
@@ -63,9 +73,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
+<<<<<<< HEAD
   'unifunc' => 'content_54787234e96563_44043506',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54787234e96563_44043506')) {function content_54787234e96563_44043506($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+=======
+  'unifunc' => 'content_547c73f0afe841_87164361',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_547c73f0afe841_87164361')) {function content_547c73f0afe841_87164361($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\xampp\\htdocs\\CallCalendar\\prestashop-skeleton\\tools\\smarty\\plugins\\modifier.escape.php';
+>>>>>>> call
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $_smarty_tpl->tpl_vars['iso']->value;?>
