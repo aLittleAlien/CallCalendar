@@ -1,25 +1,17 @@
 <?php
 /*
 
---
--- Table structure for table `ps_application_status`
---
---
-
-CREATE TABLE IF NOT EXISTS `ps_application_status` (
+CREATE TABLE `ps_application_status` (
   `id_application_status` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_application_status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Table structure for table `ps_application_status_lang`
-
-CREATE TABLE IF NOT EXISTS `ps_application_status_lang` (
+CREATE TABLE `ps_application_status_lang` (
   `id_application_status` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
-  `name` varchar(32) COLLATE utf8_swedish_ci NOT NULL,
+  `name` varchar(32) NOT NULL,
   PRIMARY KEY (`id_application_status`,`id_lang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
-
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
 

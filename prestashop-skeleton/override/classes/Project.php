@@ -644,7 +644,7 @@ class ProjectCore extends ObjectModel
 		}
 	}
 
-	//Modified vesion of function addStaff because it doesnt work properly when 
+	//Modified vesion of function addPartners because it doesnt work properly when 
 	//trying to make project from application and add staff contected to application to project staff
 	public function addProjectPartnersModified($partners)
 	{

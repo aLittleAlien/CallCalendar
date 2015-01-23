@@ -1,7 +1,28 @@
 <?php
 /*
-CREATE TABLE IF NOT EXISTS 
+CREATE TABLE `ps_application` (
+  `id_application` int(11) NOT NULL AUTO_INCREMENT,
+  `id_application_status` int(11) DEFAULT NULL,
+  `id_project_type` int(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `date_start` date DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  `money_requested` int(11) NOT NULL DEFAULT '0',
+  `mdhPartBudget` int(11) NOT NULL DEFAULT '0',
+  `id_call` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_application`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE `ps_application_lang` (
+  `id_application` int(11) NOT NULL AUTO_INCREMENT,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `acronym` varchar(32) DEFAULT NULL,
+  `keywords` text,
+  `overview` text,
+  PRIMARY KEY (`id_application`,`id_lang`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 */
 class ApplicationCore extends ObjectModel
 {

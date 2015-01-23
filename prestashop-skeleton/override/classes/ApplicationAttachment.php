@@ -1,9 +1,15 @@
 <?php
 /*
 
+CREATE TABLE `ps_application_attachment` (
+  `id_application_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_application` int(10) unsigned NOT NULL,
+  `id_attachment` int(10) unsigned NOT NULL,
+  `description` text NOT NULL,
+  `date_of_upload` date NOT NULL,
+  PRIMARY KEY (`id_application_attachment`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE IF
 */
 class ApplicationAttachmentCore extends ObjectModel
 {

@@ -1,26 +1,28 @@
 <?php
 /*
 
-CREATE TABLE IF NOT EXISTS `ps_call` (
+CREATE TABLE `ps_call` (
   `id_call` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_funding_agency` int(11) unsigned NOT NULL,
   `id_call_status` int(11) unsigned NOT NULL,
   `id_call_type` int(11) unsigned NOT NULL,
-  `planed_project_start` datetime NOT NULL,
-  `budget` decimal(10,2) DEFAULT NULL,
+  `planed_project_start` date NOT NULL,
+  `budget` int(11) DEFAULT NULL,
   `repeating` tinyint(1) DEFAULT '0',
   `url_to_call` text,
-  PRIMARY KEY (`id_Call`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_call`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `ps_call_lang` (
+CREATE TABLE `ps_call_lang` (
   `id_call` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) unsigned NOT NULL,
+  `keywords` text,
   `title` text,
   `description` text,
   `requirements` text,
+  `acronym` varchar(32) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id_call`,`id_lang`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 */
 class CallCore extends ObjectModel

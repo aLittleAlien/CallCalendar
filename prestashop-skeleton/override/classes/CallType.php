@@ -1,7 +1,17 @@
 <?php
 /*
 
+CREATE TABLE `ps_call_type` (
+  `id_call_type` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_call_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+CREATE TABLE `ps_call_type_lang` (
+  `id_call_type` int(11) NOT NULL AUTO_INCREMENT,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id_call_type`,`id_lang`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 
 */

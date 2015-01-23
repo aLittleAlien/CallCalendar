@@ -1,6 +1,13 @@
 <?php
 /*
 
+CREATE TABLE `ps_call_attachment` (
+  `id_call` int(10) unsigned NOT NULL,
+  `id_attachment` int(10) unsigned NOT NULL,
+  `date_of_upload` date NOT NULL,
+  `id_call_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_call_attachment`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 */
 class CallAttachmentCore extends ObjectModel

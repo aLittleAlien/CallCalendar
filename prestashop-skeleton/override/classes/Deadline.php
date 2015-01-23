@@ -1,7 +1,21 @@
 <?php
 /*
 
-CREATE TE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ps_deadline` (
+  `id_deadline` int(11) NOT NULL AUTO_INCREMENT,
+  `id_call` int(11) NOT NULL,
+  `deadline` date NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_deadline`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ps_deadline_lang` (
+  `id_deadline` int(11) NOT NULL AUTO_INCREMENT,
+  `id_lang` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id_deadline`,`id_lang`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
 
 */
 class DeadlineCore extends ObjectModel

@@ -435,6 +435,8 @@
 									{assign var=id_project value=$input.project}
 									{assign var=associated value=$input.values}
 									{include file='helpers/form/form_project_associated.tpl'}
+								{elseif $input.type == 'create_project'}
+									{include file='helpers/form/form_create_project_button.tpl'}
 								{elseif $input.type == 'people'}
 									{assign var=people value=$input.values}
 									{assign var=id_person value=$input.person}

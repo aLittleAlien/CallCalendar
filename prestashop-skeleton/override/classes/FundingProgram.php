@@ -1,25 +1,18 @@
 <?php
 /*
 
---
--- Table structure for table `ps_funding_program`
---
---
-
-CREATE TABLE IF NOT EXISTS `ps_funding_program` (
+CREATE TABLE `ps_funding_program` (
   `id_funding_program` int(11) NOT NULL AUTO_INCREMENT,
+  `id_funding_agency` int(11) NOT NULL,
   PRIMARY KEY (`id_funding_program`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
--- Table structure for table `ps_funding_program_lang`
-
-CREATE TABLE IF NOT EXISTS `ps_funding_program_lang` (
+CREATE TABLE `ps_funding_program_lang` (
   `id_funding_program` int(11) NOT NULL AUTO_INCREMENT,
   `id_lang` int(11) NOT NULL,
-  `name` varchar(32) COLLATE utf8_swedish_ci NOT NULL,
+  `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL,
   PRIMARY KEY (`id_funding_program`,`id_lang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
-
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 
 
